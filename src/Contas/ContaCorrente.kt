@@ -5,8 +5,9 @@ import Conta
 
 class ContaCorrente(
     cliente: Cliente,
-    numero: String
-) : Conta(cliente, numero) {
+    numero: String,
+    agencia: String
+) : Conta(cliente, numero, agencia ) {
 
     // Sobrescreve o método de saque
     override fun sacar(valor: Double): Double {

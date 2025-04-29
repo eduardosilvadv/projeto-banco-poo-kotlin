@@ -8,8 +8,8 @@ class Gerente(
     salario: Double,
     cpf: String,
     senha: String,
-    agencia: String
-) : Funcionario(nome, salario, cpf, senha,agencia) {
+    private val agencia: String
+) : Funcionario(nome, salario, cpf, senha) {
 
     override val bonificacao: Double
         get() = getSalario() * 0.2
@@ -20,5 +20,5 @@ class Gerente(
     }
 
 
-    fun getAgenciaGerente() = agencia
+    fun getAgencia() = agencia
 }

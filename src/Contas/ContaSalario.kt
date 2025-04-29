@@ -5,8 +5,9 @@ import Conta
 
 class ContaSalario(
     cliente: Cliente,
-    numero: String
-) : Conta(cliente, numero) {
+    numero: String,
+    agencia: String
+) : Conta(cliente, numero, agencia ){
 
     // Método de saque, se houver alguma lógica diferenciada para a ContaSalario
     override fun sacar(valor: Double): Double {

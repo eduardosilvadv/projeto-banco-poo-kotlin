@@ -6,8 +6,9 @@ open class Funcionario(
     private val salario: Double,
     private val cpf: String,
     private var senha: String, // A senha agora é modificável
-    val agencia: String
+
 ) : Autenticavel {
+
 
     // Método para autenticar, conforme a interface Autenticavel
     override fun autenticar(senha: String): Boolean {

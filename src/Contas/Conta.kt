@@ -1,6 +1,7 @@
 open class Conta(
     private val cliente: Cliente,  // Cliente associado à conta (privado)
-    private val numero: String     // Número da conta (privado)
+    private val numeroConta: String,
+    private  val agencia: String// Número da conta (privado)
 ) {
     private var saldo: Double = 0.0  // Saldo da conta (privado)
 
@@ -35,7 +36,7 @@ open class Conta(
     fun transferir(valor: Double, contaDestino: Conta): Boolean {
         if (this.sacar(valor) > 0) {
             contaDestino.depositar(valor)
-            println("Transferência de R$$valor realizada com sucesso para a conta ${contaDestino.getNumero()}.")
+            println("Transferência de R$$valor realizada com sucesso para a conta ${contaDestino.getNumeroConta()}.")
             return true
         }
         return false
@@ -47,7 +48,7 @@ open class Conta(
     }
 
     // Getter para acessar o número da conta (privado)
-    fun getNumero(): Double {
+    fun getSaldo(): Double {
         return saldo
     }
 
@@ -55,9 +56,10 @@ open class Conta(
     fun getCliente(): Cliente {
         return cliente
     }
-    fun getSaldo(): String{
-        return numero
+    fun getNumeroConta(): String{
+        return numeroConta
     }
+
     // Método protegido para efetuar saque (chamado pelas subclasses)
     protected fun efetuarSaque(valor: Double): Double {
         if (valor <= saldo) {
@@ -68,4 +70,5 @@ open class Conta(
             return 0.0
         }
     }
+    fun getAgencia(): String = agencia
 }

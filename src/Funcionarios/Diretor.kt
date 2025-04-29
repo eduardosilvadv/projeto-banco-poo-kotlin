@@ -8,8 +8,8 @@ class Diretor(
     nome: String,
     salario: Double,
     cpf: String,
-    senha: String, agencia: String,
-) : Funcionario(nome, salario, cpf, senha, ""), Autenticavel {
+    senha: String,
+) : Funcionario(nome, salario, cpf, senha), Autenticavel {
 
     private val senhaAcesso = senha
     private val listaGerentes = mutableListOf<Gerente>()
