@@ -9,12 +9,15 @@ class ContaCorrente(
     agencia: String
 ) : Conta(cliente, numero, agencia ) {
 
-    // Sobrescreve o método de saque
+
+
     override fun sacar(valor: Double): Double {
-        if (valor <= consultarSaldo()) {
-            return super.efetuarSaque(valor)  // Chama o método de saque da classe pai
+        val taxa = 1.02 // 2% de taxa no saque
+        val valorComTaxa = valor * taxa
+        if (valorComTaxa <= consultarSaldo()) {
+            return super.sacar(valorComTaxa)  // Chama o método da classe pai, passando o valor com a taxa
         } else {
-            println("❌ Saldo insuficiente para o saque.")
+            println("❌ Saldo insuficiente para o saque com taxa.")
             return 0.0
         }
     }

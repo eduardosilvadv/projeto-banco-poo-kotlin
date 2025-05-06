@@ -25,10 +25,9 @@ fun main() {
     val contaPoupanca = ContaPoupanca(cliente, "101", "456")
 
     usuarios.addAll(listOf(gerente, diretor, cliente, contaCliente, contaPoupanca))
-
     while (true) {
         limparTela()
-        println("\n=== MENU BANCO ===")
+        println("\n=== BANCO ===")
 
         if (usuarioLogado == null) {
             println("1. Login como Cliente")
@@ -161,15 +160,12 @@ fun main() {
                             println("=== Desbloquear cliente ===")
                             print("Agência do cliente: ")
                             val agenciaCliente = readln()
-                            print("Número da conta do cliente: ")
-                            val contaCliente = readln()
                             print("CPF do cliente: ")
                             val cpfCliente = readln()
 
                             val conta = usuarios.find {
                                 it is Conta &&
                                         it.getAgencia() == agenciaCliente &&
-                                        it.getNumeroConta() == contaCliente &&
                                         it.getCliente().getCpf() == cpfCliente
                             } as? Conta
 

@@ -12,7 +12,7 @@ class Gerente(
 ) : Funcionario(nome, salario, cpf, senha) {
 
     override val bonificacao: Double
-        get() = getSalario() * 0.2
+        get() = getSalario() * 1.2
 
     fun desbloquearCliente(cliente: Cliente, novaSenha: String) {
         cliente.redefinirSenha(novaSenha)
