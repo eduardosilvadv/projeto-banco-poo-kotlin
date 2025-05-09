@@ -47,15 +47,15 @@ fun main() {
                     val senha = readln()
 
                     val usuario = usuarios.find {
-                        it is Conta && it.getAgencia() == agencia && it.getNumeroConta() == conta
+                        it is Conta && it.agencia == agencia && it.numeroConta == conta
                     } as? Conta
 
-                    val cliente = usuario?.getCliente()
+                    val cliente = usuario?.cliente
 
                     if (cliente != null && cliente.autenticar(senha)) {
                         usuarioLogado = cliente
                         println("✅ Login como ${cliente.getNome()} (Cliente)")
-                        println("Saldo da conta ${usuario.getNumeroConta()}: R$ ${usuario.getSaldo()}")
+                        println("Saldo da conta ${usuario.numeroConta}: R$ ${usuario.saldo}")
                     } else {
                         println("❌ Cliente não encontrado ou senha inválida.")
                     }
@@ -99,15 +99,15 @@ fun main() {
                     print("Digite uma opção: ")
                     when (readln()) {
                         "1" -> {
-                            val contasDoCliente = usuarios.filterIsInstance<Conta>().filter { it.getCliente() == usuarioLogado }
+                            val contasDoCliente = usuarios.filterIsInstance<Conta>().filter { it.cliente == usuarioLogado }
                             contasDoCliente.forEach {
-                                println("Conta ${it.getNumeroConta()} - Agência ${it.getAgencia()} | Saldo: R$ ${it.getSaldo()}")
+                                println("Conta ${it.numeroConta} - Agência ${it.agencia} | Saldo: R$ ${it.saldo}")
                             }
                         }
                         "2" -> {
                             println("Digite o número da conta para saque:")
                             val numeroConta = readln()
-                            val conta = usuarios.find { it is Conta && it.getCliente() == usuarioLogado && it.getNumeroConta() == numeroConta } as? Conta
+                            val conta = usuarios.find { it is Conta && it.cliente == usuarioLogado && it.numeroConta == numeroConta } as? Conta
                             if (conta != null) {
                                 print("Digite o valor para saque: R$ ")
                                 val valor = readln().toDouble()
@@ -119,7 +119,7 @@ fun main() {
                         "3" -> {
                             println("Digite o número da conta para depósito:")
                             val numeroConta = readln()
-                            val conta = usuarios.find { it is Conta && it.getCliente() == usuarioLogado && it.getNumeroConta() == numeroConta } as? Conta
+                            val conta = usuarios.find { it is Conta && it.cliente == usuarioLogado && it.numeroConta == numeroConta } as? Conta
                             if (conta != null) {
                                 print("Digite o valor para depósito: R$ ")
                                 val valor = readln().toDouble()
@@ -139,8 +139,8 @@ fun main() {
                             print("Valor a transferir: R$ ")
                             val valor = readln().toDouble()
 
-                            val contaOrigem = usuarios.find { it is Conta && it.getCliente() == usuarioLogado && it.getNumeroConta() == origemNumero } as? Conta
-                            val contaDestino = usuarios.find { it is Conta && it.getAgencia() == destinoAgencia && it.getNumeroConta() == destinoNumero } as? Conta
+                            val contaOrigem = usuarios.find { it is Conta && it.cliente == usuarioLogado && it.numeroConta == origemNumero } as? Conta
+                            val contaDestino = usuarios.find { it is Conta && it.agencia == destinoAgencia && it.numeroConta == destinoNumero } as? Conta
 
                             if (contaOrigem != null && contaDestino != null) {
                                 contaOrigem.transferir(valor, contaDestino)
@@ -165,11 +165,11 @@ fun main() {
 
                             val conta = usuarios.find {
                                 it is Conta &&
-                                        it.getAgencia() == agenciaCliente &&
-                                        it.getCliente().getCpf() == cpfCliente
+                                        it.agencia == agenciaCliente &&
+                                        it.cliente.getCpf() == cpfCliente
                             } as? Conta
 
-                            val clienteAlvo = conta?.getCliente()
+                            val clienteAlvo = conta?.cliente
 
                             if (clienteAlvo != null && clienteAlvo.estaBloqueado()) {
                                 print("Digite nova senha para o cliente: ")

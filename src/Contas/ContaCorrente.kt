@@ -9,12 +9,10 @@ class ContaCorrente(
     agencia: String
 ) : Conta(cliente, numero, agencia ) {
 
-
-
     override fun sacar(valor: Double): Double {
         val taxa = 1.02 // 2% de taxa no saque
         val valorComTaxa = valor * taxa
-        if (valorComTaxa <= consultarSaldo()) {
+        if (valorComTaxa <= saldo) {
             return super.sacar(valorComTaxa)  // Chama o método da classe pai, passando o valor com a taxa
         } else {
             println("❌ Saldo insuficiente para o saque com taxa.")
@@ -25,7 +23,7 @@ class ContaCorrente(
     // Sobrescreve o método de depósito
     override fun depositar(valor: Double) {
         if (valor > 0) {
-            super.adicionarSaldo(valor)  // Chama o método de adicionar saldo da classe pai
+            saldo += valor
             println("Depósito de R$$valor realizado com sucesso na Conta Corrente.")
         } else {
             println("❌ Valor de depósito inválido.")

@@ -1,3 +1,4 @@
+/*
 package Contas
 
 import Cliente
@@ -28,4 +29,4 @@ class ContaSalario(
             println("❌ Valor de depósito inválido.")
         }
     }
-}
+}*/
