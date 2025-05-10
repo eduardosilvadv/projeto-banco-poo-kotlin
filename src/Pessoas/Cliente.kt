@@ -3,7 +3,7 @@ import Autenticacao.Autenticavel
 // Em Cliente.kt
 class Cliente(
     val nome: String,
-    var senha: String,
+    private var senha: String,
     val cpf: String
 
 ) : Autenticavel {

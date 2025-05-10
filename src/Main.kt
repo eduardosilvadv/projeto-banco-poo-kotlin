@@ -68,13 +68,13 @@ fun main() {
                     val senha = readln()
 
                     val usuario = usuarios.find {
-                        (it is Gerente && it.getCpf() == cpf) || (it is Diretor && it.getCpf() == cpf)
+                        (it is Gerente && it.cpf == cpf) || (it is Diretor && it.cpf == cpf)
                     }
 
                     if (usuario is Funcionario) {
                         if (usuario.autenticar(senha)) {
                             usuarioLogado = usuario
-                            println("✅ Login como ${usuario.getNome()} (${usuario::class.simpleName})")
+                            println("✅ Login como ${usuario.nome} (${usuario::class.simpleName})")
                         } else {
                             println("❌ Falha na autenticação.")
                         }
