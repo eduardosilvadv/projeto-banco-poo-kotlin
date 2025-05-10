@@ -1,5 +1,4 @@
 import Autenticacao.Autenticavel
-import Contas.ContaCorrente
 
 // Em Cliente.kt
 class Cliente(
