@@ -3,12 +3,12 @@ import Autenticacao.Autenticavel
 // Em Cliente.kt
 class Cliente(
     val nome: String,
-    private var senha: String,
+    protected var senha: String,
     val cpf: String
 
 ) : Autenticavel {
-    private var bloqueado = false
-    private var tentativas = 0
+    protected var bloqueado = false
+    protected var tentativas = 0
 
     override fun autenticar(senha: String): Boolean {
         if (bloqueado) {

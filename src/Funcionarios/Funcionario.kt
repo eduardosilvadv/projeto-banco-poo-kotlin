@@ -5,7 +5,7 @@ open class Funcionario(
     val nome: String,
     val salario: Double,
     val cpf: String,
-    private var senha: String, // A senha agora é modificável
+    protected var senha: String, // A senha agora é modificável
 ) : Autenticavel {
 
 

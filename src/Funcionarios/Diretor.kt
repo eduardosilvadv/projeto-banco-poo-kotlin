@@ -9,10 +9,10 @@ class Diretor(
     salario: Double,
     cpf: String,
     senha: String,
-) : Funcionario(nome, salario, cpf, senha), Autenticavel {
+) : Funcionario(nome, salario, cpf, senha){
 
-    private val senhaAcesso = senha
-    private val listaGerentes = mutableListOf<Gerente>()
+    protected val senhaAcesso = senha
+    protected val listaGerentes = mutableListOf<Gerente>()
 
     // Bonificação: 100% do salário
     override val bonificacao: Double

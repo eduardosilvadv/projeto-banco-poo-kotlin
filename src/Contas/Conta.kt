@@ -1,15 +1,13 @@
 abstract class Conta(
-    var cliente: Cliente, // Cliente associado à conta (privado)
+    var cliente: Cliente,
     val numeroConta: String,
-    val agencia: String// Número da conta (privado)
+    val agencia: String
 ) {
-    var saldo: Double = 0.0 // Saldo da conta (privado)
+    var saldo: Double = 0.0
         protected set
 
-    // Método para depositar valor na conta
     abstract fun depositar(valor: Double)
 
-    // Método para sacar valor da conta
     open fun sacar(valor: Double): Double {
         if (valor <= saldo) {
             saldo -= valor
