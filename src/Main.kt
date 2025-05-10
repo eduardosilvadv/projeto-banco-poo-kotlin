@@ -54,7 +54,7 @@ fun main() {
 
                     if (cliente != null && cliente.autenticar(senha)) {
                         usuarioLogado = cliente
-                        println("✅ Login como ${cliente.getNome()} (Cliente)")
+                        println("✅ Login como ${cliente.nome} (Cliente)")
                         println("Saldo da conta ${usuario.numeroConta}: R$ ${usuario.saldo}")
                     } else {
                         println("❌ Cliente não encontrado ou senha inválida.")
@@ -88,7 +88,7 @@ fun main() {
         } else {
             when (usuarioLogado) {
                 is Cliente -> {
-                    println("Olá, ${usuarioLogado.getNome()}")
+                    println("Olá, ${usuarioLogado.nome}")
                     println()
                     println("1. Consultar saldo")
                     println("2. Sacar")
@@ -166,7 +166,7 @@ fun main() {
                             val conta = usuarios.find {
                                 it is Conta &&
                                         it.agencia == agenciaCliente &&
-                                        it.cliente.getCpf() == cpfCliente
+                                        it.cliente.cpf == cpfCliente
                             } as? Conta
 
                             val clienteAlvo = conta?.cliente
